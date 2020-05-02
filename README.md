@@ -1,4 +1,4 @@
-# GetcuReone.Services
+# GetcuReone.Cdi
 
 Common domain infrastructure.
 
