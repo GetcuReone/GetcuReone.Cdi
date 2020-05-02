@@ -1,5 +1,7 @@
 ﻿using GetcuReone.Cdi.FactFactory;
 using GetcuReone.ComboPatterns.Interfaces;
+using GetcuReone.FactFactory.Versioned;
+using GetcuReone.FactFactory.Versioned.BaseEntities;
 using GetcuReone.FactFactory.Versioned.Entities;
 
 namespace GetcuReone.Cdi
@@ -31,6 +33,21 @@ namespace GetcuReone.Cdi
                     rule.WriteLogAction = provider.WriteLog;
 
             return factFactory;
+        }
+
+        /// <summary>
+        /// Update or add fact.
+        /// </summary>
+        /// <typeparam name="TFact"></typeparam>
+        /// <param name="container"></param>
+        /// <param name="fact"></param>
+        public static void UpdateFact<TFact>(this VersionedFactContainerBase<VersionedFactBase> container, TFact fact)
+            where TFact : VersionedFactBase
+        {
+            if (container.TryGetFact(out TFact fact1))
+                container.Remove(fact1);
+
+            container.Add(fact);
         }
     }
 }
