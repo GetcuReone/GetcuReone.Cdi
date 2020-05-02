@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetcuReone.Cdi", "GetcuReone.Cdi\GetcuReone.Cdi.csproj", "{7D0FB142-E926-4EDF-B3ED-9B2B527C7DAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D1C7D2D2-BFCF-457F-838C-DFC002E5265A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pipelines", "Infrastructure\Pipelines\Pipelines.csproj", "{E5676DB5-8182-4A0F-8691-E0A1ACAA0590}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D0FB142-E926-4EDF-B3ED-9B2B527C7DAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D0FB142-E926-4EDF-B3ED-9B2B527C7DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D0FB142-E926-4EDF-B3ED-9B2B527C7DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D0FB142-E926-4EDF-B3ED-9B2B527C7DAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5676DB5-8182-4A0F-8691-E0A1ACAA0590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5676DB5-8182-4A0F-8691-E0A1ACAA0590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5676DB5-8182-4A0F-8691-E0A1ACAA0590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5676DB5-8182-4A0F-8691-E0A1ACAA0590}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E5676DB5-8182-4A0F-8691-E0A1ACAA0590} = {D1C7D2D2-BFCF-457F-838C-DFC002E5265A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A048772-97BF-4F23-B6FD-E173AF66F4CA}
+	EndGlobalSection
+EndGlobal
