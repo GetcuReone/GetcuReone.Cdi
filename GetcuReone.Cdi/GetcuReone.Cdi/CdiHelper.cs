@@ -3,6 +3,9 @@ using GetcuReone.ComboPatterns.Interfaces;
 using GetcuReone.FactFactory.Versioned;
 using GetcuReone.FactFactory.Versioned.BaseEntities;
 using GetcuReone.FactFactory.Versioned.Entities;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace GetcuReone.Cdi
 {
@@ -48,6 +51,17 @@ namespace GetcuReone.Cdi
                 container.Remove(fact1);
 
             container.Add(fact);
+        }
+
+        /// <summary>
+        /// To <see cref="ReadOnlyCollection{TItem}"/>
+        /// </summary>
+        /// <typeparam name="TItem"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static ReadOnlyCollection<TItem> ToReadOnlyCollection<TItem>(this IList<TItem> list)
+        {
+            return new ReadOnlyCollection<TItem>(list);
         }
     }
 }
