@@ -3,6 +3,7 @@ using GetcuReone.ComboPatterns.Interfaces;
 using GetcuReone.FactFactory.Versioned;
 using GetcuReone.FactFactory.Versioned.BaseEntities;
 using GetcuReone.FactFactory.Versioned.Entities;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -62,6 +63,28 @@ namespace GetcuReone.Cdi
         public static ReadOnlyCollection<TItem> ToReadOnlyCollection<TItem>(this IList<TItem> list)
         {
             return new ReadOnlyCollection<TItem>(list);
+        }
+
+        /// <summary>
+        /// <see cref="string.Equals(string)"/> with <see cref="StringComparison.Ordinal"/>.
+        /// </summary>
+        /// <param name="first"></param>
+        /// <param name="second"></param>
+        /// <returns></returns>
+        public static bool EqualsOrdinal(this string first, string second)
+        {
+            return first.Equals(second, StringComparison.Ordinal);
+        }
+
+        /// <summary>
+        /// <see cref="string.Equals(string)"/> with <see cref="StringComparison.OrdinalIgnoreCase"/>.
+        /// </summary>
+        /// <param name="first"></param>
+        /// <param name="second"></param>
+        /// <returns></returns>
+        public static bool EqualsOrdinalIgnoreCase(this string first, string second)
+        {
+            return first.Equals(second, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
