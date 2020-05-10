@@ -112,7 +112,18 @@ namespace GetcuReone.Cdi
         /// <returns></returns>
         public static GetcuReoneException CreateException(List<ErrorDetail> details)
         {
-            return new GetcuReoneException(details.ToReadOnlyCollection());
+            return new GetcuReoneException(details.MayBeNull().ToReadOnlyCollection());
+        }
+
+        /// <summary>
+        /// If the <paramref name="items"/> is null it will create a new empty list.
+        /// </summary>
+        /// <typeparam name="TItem"></typeparam>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        public static List<TItem> MayBeNull<TItem>(this List<TItem> items)
+        {
+            return items ?? new List<TItem>();
         }
     }
 }
