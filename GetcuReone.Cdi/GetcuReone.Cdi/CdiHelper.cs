@@ -1,10 +1,10 @@
 ﻿using GetcuReone.Cdi.FactFactory;
+using GetcuReone.Cdm.Errors;
 using GetcuReone.ComboPatterns.Interfaces;
 using GetcuReone.FactFactory.Versioned;
 using GetcuReone.FactFactory.Versioned.BaseEntities;
 using GetcuReone.FactFactory.Versioned.Entities;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -85,6 +85,34 @@ namespace GetcuReone.Cdi
         public static bool EqualsOrdinalIgnoreCase(this string first, string second)
         {
             return first.Equals(second, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        /// Create exception.
+        /// </summary>
+        /// <param name="code">error code.</param>
+        /// <param name="reason">error reason.</param>
+        /// <returns></returns>
+        public static GetcuReoneException CreateException(string code, string reason)
+        {
+            return CreateException(new List<ErrorDetail>
+            {
+                new ErrorDetail
+                {
+                    Code = code,
+                    Reason = reason,
+                },
+            });
+        }
+
+        /// <summary>
+        /// Create exception.
+        /// </summary>
+        /// <param name="details"></param>
+        /// <returns></returns>
+        public static GetcuReoneException CreateException(List<ErrorDetail> details)
+        {
+            return new GetcuReoneException(details.ToReadOnlyCollection());
         }
     }
 }
