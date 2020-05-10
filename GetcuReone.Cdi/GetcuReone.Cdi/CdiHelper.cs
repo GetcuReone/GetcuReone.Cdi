@@ -7,6 +7,7 @@ using GetcuReone.FactFactory.Versioned.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace GetcuReone.Cdi
 {
@@ -124,6 +125,17 @@ namespace GetcuReone.Cdi
         public static List<TItem> MayBeNull<TItem>(this List<TItem> items)
         {
             return items ?? new List<TItem>();
+        }
+
+        /// <summary>
+        /// Is null or empty.
+        /// </summary>
+        /// <typeparam name="TItem"></typeparam>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        public static bool IsNullOrEmpty<TItem>(this IEnumerable<TItem> items)
+        {
+            return items == null || !items.Any();
         }
     }
 }
