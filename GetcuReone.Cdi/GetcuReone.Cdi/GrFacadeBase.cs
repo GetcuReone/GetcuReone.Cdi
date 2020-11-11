@@ -1,11 +1,9 @@
-﻿using GetcuReone.Cdi.FactFactory;
-using GetcuReone.Cdo.Adapters.Logger;
+﻿using GetcuReone.Cdo.Logging;
+using GetcuReone.ComboPatterns.Adapter;
 using GetcuReone.ComboPatterns.Interfaces;
-using GetcuReone.FactFactory.Versioned.Entities;
-using System;
-using System.Collections.Generic;
+using Newtonsoft.Json;
+using NLog;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace GetcuReone.Cdi
 {
@@ -14,41 +12,33 @@ namespace GetcuReone.Cdi
     /// </summary>
     public abstract class GrFacadeBase : ComboPatterns.Facade.FacadeBase, IAdapterCreation
     {
-        private GrFactFactory _grFactFactory;
-
-        private string _teg => "[facade]";
-
         /// <summary>
         /// Facade name.
         /// </summary>
         protected abstract string FacadeName { get; }
 
         /// <summary>
-        /// Write log.
+        /// Logger.
         /// </summary>
-        /// <param name="message"></param>
-        protected virtual void WriteLog(string message)
-        {
-            GetAdapter<NLogAdapter>().Debug(message);
-        }
+        protected NLogAdapter NLogger => _nLogAdapter ?? (_nLogAdapter = GetAdapter<NLogAdapter>());
+        private NLogAdapter _nLogAdapter;
 
         /// <summary>
         /// Write log.
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="param"></param>
-        protected virtual void WriteLog<TParam>(string message, TParam param)
+        /// <param name="messageFunc"></param>
+        protected virtual void WriteLog(LogMessageGenerator messageFunc)
         {
-            GetAdapter<NLogAdapter>().Debug(message, param);
+            NLogger.Debug(messageFunc);
         }
 
         /// <summary>
         /// Logs a method call without parameters.
         /// </summary>
         /// <param name="methodName"></param>
-        protected virtual void CallMethodLogging([CallerMemberName]string methodName = "")
+        protected virtual void CallMethodLogging([CallerMemberName] string methodName = "")
         {
-            WriteLog($"{_teg}[call] {FacadeName}.{methodName}");
+            WriteLog(() => $"{Tags.Facade}{Tags.Call} {FacadeName}.{methodName}");
         }
 
         /// <summary>
@@ -57,17 +47,17 @@ namespace GetcuReone.Cdi
         /// <typeparam name="TParameter"></typeparam>
         /// <param name="methodName"></param>
         /// <param name="parameter"></param>
-        protected virtual void CallMethodLogging<TParameter>(TParameter parameter, [CallerMemberName]string methodName = "")
+        protected virtual void CallMethodLogging<TParameter>(TParameter parameter, [CallerMemberName] string methodName = "")
         {
-            WriteLog($"{_teg}[call] {FacadeName}.{methodName}\n" + "parameter: {0}", parameter);
+            WriteLog(() => $"{Tags.Facade}{Tags.Call} {FacadeName}.{methodName}\nparameter: {JsonConvert.SerializeObject(parameter)}");
         }
 
         /// <summary>
         /// Logs no response.
         /// </summary>
-        protected virtual void ReturnLogging([CallerMemberName]string methodName = "")
+        protected virtual void ReturnLogging([CallerMemberName] string methodName = "")
         {
-            WriteLog($"{_teg}[result] {FacadeName}.{methodName}:\nresult: void");
+            WriteLog(() => $"{Tags.Facade}{Tags.Result} {FacadeName}.{methodName}:\nresult: void");
         }
 
         /// <summary>
@@ -77,9 +67,9 @@ namespace GetcuReone.Cdi
         /// <param name="returnedObj"></param>
         /// <param name="methodName"></param>
         /// <returns></returns>
-        protected virtual TResult ReturnLogging<TResult>(TResult returnedObj, [CallerMemberName]string methodName = "")
+        protected virtual TResult ReturnLogging<TResult>(TResult returnedObj, [CallerMemberName] string methodName = "")
         {
-            WriteLog($"{_teg}[result] {FacadeName}.{methodName}:\n" + "result: {0}", returnedObj);
+            WriteLog(() => $"{Tags.Facade}{Tags.Result} {FacadeName}.{methodName}\nparameter: {JsonConvert.SerializeObject(returnedObj)}");
             return returnedObj;
         }
 
@@ -90,31 +80,10 @@ namespace GetcuReone.Cdi
         /// <param name="returnedObj"></param>
         /// <param name="methodName"></param>
         /// <returns></returns>
-        protected virtual TResult ReturnNotLogging<TResult>(TResult returnedObj, [CallerMemberName]string methodName = "")
+        protected virtual TResult ReturnNotLogging<TResult>(TResult returnedObj, [CallerMemberName] string methodName = "")
         {
-            WriteLog($"{_teg}[result] {FacadeName}.{methodName}:\n" + "result: not logging obj");
+            WriteLog(() => $"{Tags.Facade}{Tags.Result} {FacadeName}.{methodName}:\nresult: not logging obj");
             return returnedObj;
-        }
-
-        /// <summary>
-        /// Get fact factory.
-        /// </summary>
-        /// <typeparam name="TRulesProvider"></typeparam>
-        /// <param name="container"></param>
-        /// <param name="isOnlyNewFactory"></param>
-        /// <returns></returns>
-        protected virtual GrFactFactory GetFactFactory<TRulesProvider>(VersionedFactContainer container, bool isOnlyNewFactory = false)
-            where TRulesProvider : GrFactRulesProviderBase, new()
-        {
-            if (_grFactFactory == null || isOnlyNewFactory)
-                return _grFactFactory = CdiHelper.CreateFactFactory<TRulesProvider>(Factory, container);
-
-            _grFactFactory.Container.Clear();
-
-            foreach (var fact in container)
-                _grFactFactory.Container.Add(fact);
-
-            return _grFactFactory;
         }
 
         /// <summary>
@@ -124,7 +93,10 @@ namespace GetcuReone.Cdi
         /// <returns></returns>
         public virtual TAdapter GetAdapter<TAdapter>() where TAdapter : IAdapter, new()
         {
-            return ComboPatterns.Adapter.AdapterBase.Create<TAdapter>(Factory);
+            if (Factory is IAdapterCreation adapterCreation)
+                return adapterCreation.GetAdapter<TAdapter>();
+
+            return AdapterBase.Create<TAdapter>(Factory);
         }
     }
 }
