@@ -1,4 +1,7 @@
-﻿using GetcuReone.Cdo.Adapters.Logger;
+﻿using GetcuReone.Cdo.Logging;
+using GetcuReone.ComboPatterns.Adapter;
+using Newtonsoft.Json;
+using NLog;
 using System.Runtime.CompilerServices;
 
 namespace GetcuReone.Cdi
@@ -6,41 +9,35 @@ namespace GetcuReone.Cdi
     /// <summary>
     /// Base class for adapters.
     /// </summary>
-    public abstract class GrAdapterBase : ComboPatterns.Adapter.AdapterBase
+    public abstract class GrAdapterBase : AdapterBase
     {
-        private string _teg => "[adapter]";
-
         /// <summary>
-        /// Facade name.
+        /// Adapter name.
         /// </summary>
         protected abstract string AdapterName { get; }
 
         /// <summary>
-        /// Write log.
+        /// Logger.
         /// </summary>
-        /// <param name="message"></param>
-        protected virtual void WriteLog(string message)
-        {
-            GetAdapter<NLogAdapter>().Debug(message);
-        }
+        protected NLogAdapter NLogger => _nLogAdapter ?? (_nLogAdapter ?? GetAdapter<NLogAdapter>());
+        private NLogAdapter _nLogAdapter;
 
         /// <summary>
         /// Write log.
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="param"></param>
-        protected virtual void WriteLog<TParam>(string message, TParam param)
+        /// <param name="messageFunc"></param>
+        protected virtual void WriteLog(LogMessageGenerator messageFunc)
         {
-            GetAdapter<NLogAdapter>().Debug(message, param);
+            NLogger.Debug(messageFunc);
         }
 
         /// <summary>
         /// Logs a method call without parameters.
         /// </summary>
         /// <param name="methodName"></param>
-        protected virtual void CallMethodLogging([CallerMemberName]string methodName = "")
+        protected virtual void CallMethodLogging([CallerMemberName] string methodName = "")
         {
-            WriteLog($"{_teg}[call] {AdapterName}.{methodName}");
+            WriteLog(() => $"{Tags.Adapter}{Tags.Call} {AdapterName}.{methodName}");
         }
 
         /// <summary>
@@ -49,17 +46,17 @@ namespace GetcuReone.Cdi
         /// <typeparam name="TParameter"></typeparam>
         /// <param name="methodName"></param>
         /// <param name="parameter"></param>
-        protected virtual void CallMethodLogging<TParameter>(TParameter parameter, [CallerMemberName]string methodName = "")
+        protected virtual void CallMethodLogging<TParameter>(TParameter parameter, [CallerMemberName] string methodName = "")
         {
-            WriteLog($"{_teg}[call] {AdapterName}.{methodName}\n" + "parameter: {0}", parameter);
+            WriteLog(() => $"{Tags.Adapter}{Tags.Call} {AdapterName}.{methodName}\nparameter: {JsonConvert.SerializeObject(parameter)}");
         }
 
         /// <summary>
         /// Logs no response.
         /// </summary>
-        protected virtual void ReturnLogging([CallerMemberName]string methodName = "")
+        protected virtual void ReturnLogging([CallerMemberName] string methodName = "")
         {
-            WriteLog($"{_teg}[result] {AdapterName}.{methodName}:\nresult: void");
+            WriteLog(() => $"{Tags.Adapter}{Tags.Result} {AdapterName}.{methodName}:\nresult: void");
         }
 
         /// <summary>
@@ -69,9 +66,9 @@ namespace GetcuReone.Cdi
         /// <param name="returnedObj"></param>
         /// <param name="methodName"></param>
         /// <returns></returns>
-        protected virtual TResult ReturnLogging<TResult>(TResult returnedObj, [CallerMemberName]string methodName = "")
+        protected virtual TResult ReturnLogging<TResult>(TResult returnedObj, [CallerMemberName] string methodName = "")
         {
-            WriteLog($"{_teg}[result] {AdapterName}.{methodName}:\n" + "result: {0}", returnedObj);
+            WriteLog(() => $"{Tags.Adapter}{Tags.Result} {AdapterName}.{methodName}\nparameter: {JsonConvert.SerializeObject(returnedObj)}");
             return returnedObj;
         }
 
@@ -82,9 +79,9 @@ namespace GetcuReone.Cdi
         /// <param name="returnedObj"></param>
         /// <param name="methodName"></param>
         /// <returns></returns>
-        protected virtual TResult ReturnNotLogging<TResult>(TResult returnedObj, [CallerMemberName]string methodName = "")
+        protected virtual TResult ReturnNotLogging<TResult>(TResult returnedObj, [CallerMemberName] string methodName = "")
         {
-            WriteLog($"{_teg}[result] {AdapterName}.{methodName}:\n" + "result: not logging obj");
+            WriteLog(() => $"{Tags.Adapter}{Tags.Result} {AdapterName}.{methodName}:\nresult: not logging obj");
             return returnedObj;
         }
     }

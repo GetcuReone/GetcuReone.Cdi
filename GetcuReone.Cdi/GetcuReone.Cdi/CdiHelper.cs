@@ -1,6 +1,7 @@
 ﻿using GetcuReone.Cdi.FactFactory;
 using GetcuReone.Cdm.Errors;
 using GetcuReone.ComboPatterns.Interfaces;
+using GetcuReone.FactFactory.Interfaces;
 using GetcuReone.FactFactory.Versioned;
 using GetcuReone.FactFactory.Versioned.BaseEntities;
 using GetcuReone.FactFactory.Versioned.Entities;
@@ -23,21 +24,11 @@ namespace GetcuReone.Cdi
         /// <param name="factory"></param>
         /// <param name="container"></param>
         /// <returns></returns>
-        public static GrFactFactory CreateFactFactory<TRulesProvider>(IAbstractFactory factory, VersionedFactContainer container)
+        public static GrFactFactory CreateFactFactory<TRulesProvider>(IAbstractFactory factory)
             where TRulesProvider : GrFactRulesProviderBase, new()
         {
             var provider = new TRulesProvider { Factory = factory };
-
-            var factFactory = new GrFactFactory(container, provider.GetRules(), provider.GetVersions)
-            {
-                WriteLogAction = provider.WriteLog,
-            };
-
-            foreach (var rule in factFactory.Rules)
-                if (rule.WriteLogAction != provider.WriteLog)
-                    rule.WriteLogAction = provider.WriteLog;
-
-            return factFactory;
+            return new GrFactFactory(provider);
         }
 
         /// <summary>
@@ -46,8 +37,8 @@ namespace GetcuReone.Cdi
         /// <typeparam name="TFact"></typeparam>
         /// <param name="container"></param>
         /// <param name="fact"></param>
-        public static void UpdateFact<TFact>(this VersionedFactContainerBase<VersionedFactBase> container, TFact fact)
-            where TFact : VersionedFactBase
+        public static void UpdateFact<TFact>(this VersionedFactContainerBase container, TFact fact)
+            where TFact : IFact
         {
             if (container.TryGetFact(out TFact fact1))
                 container.Remove(fact1);
