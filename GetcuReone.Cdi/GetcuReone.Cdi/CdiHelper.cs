@@ -22,7 +22,6 @@ namespace GetcuReone.Cdi
         /// </summary>
         /// <typeparam name="TRulesProvider"></typeparam>
         /// <param name="factory"></param>
-        /// <param name="container"></param>
         /// <returns></returns>
         public static GrFactFactory CreateFactFactory<TRulesProvider>(IAbstractFactory factory)
             where TRulesProvider : GrFactRulesProviderBase, new()

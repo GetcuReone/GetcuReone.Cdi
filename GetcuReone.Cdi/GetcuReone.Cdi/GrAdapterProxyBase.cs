@@ -19,7 +19,7 @@ namespace GetcuReone.Cdi
         /// <summary>
         /// Logger.
         /// </summary>
-        protected NLogAdapter NLogger => _nLogAdapter ?? (_nLogAdapter ?? GetAdapter<NLogAdapter>());
+        protected NLogAdapter NLogger => _nLogAdapter ?? (_nLogAdapter = GetAdapter<NLogAdapter>());
         private NLogAdapter _nLogAdapter;
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace GetcuReone.Cdi
         /// <summary>
         /// Logger.
         /// </summary>
-        protected NLogAdapter NLogger => _nLogAdapter ?? (_nLogAdapter ?? GetAdapter<NLogAdapter>());
+        protected NLogAdapter NLogger => _nLogAdapter ?? (_nLogAdapter = GetAdapter<NLogAdapter>());
         private NLogAdapter _nLogAdapter;
 
         /// <summary>
