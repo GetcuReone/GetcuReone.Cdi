@@ -2,6 +2,8 @@
 
 Common domain infrastructure.
 
-[Link][nuget_source] to a resource with NuGet packages.
+[![NuGet version (GetcuReone.Cdi)](https://img.shields.io/nuget/v/GetcuReone.Cdi.svg?style=flat-square)](https://www.nuget.org/packages/GetcuReone.Cdi/)
+[![Build status](https://dev.azure.com/GetcuReone-Studio/OpenSource-Projects/_apis/build/status/master-GetcuReone.Cdi?branchName=master)](https://dev.azure.com/GetcuReone-Studio/OpenSource-Projects/_build/latest?definitionId=33)
 
-[nuget_source]: https://pkgs.dev.azure.com/GetcuReone/_packaging/b15013dc-d009-7e3e-ac41-e7686be8155f/nuget/v3/index.json "GetcuReone_NuGet"
+- [NuGet Package](https://www.nuget.org/packages/GetcuReone.Cdi/)
+- [License](LICENSE.txt)

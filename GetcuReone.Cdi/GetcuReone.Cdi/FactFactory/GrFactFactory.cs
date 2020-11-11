@@ -1,103 +1,65 @@
-﻿using GetcuReone.FactFactory;
-using GetcuReone.FactFactory.Helpers;
+﻿using GetcuReone.FactFactory.Entities;
 using GetcuReone.FactFactory.Interfaces;
+using GetcuReone.FactFactory.Interfaces.Context;
+using GetcuReone.FactFactory.Interfaces.Operations;
 using GetcuReone.FactFactory.Versioned;
 using GetcuReone.FactFactory.Versioned.Entities;
-using GetcuReone.FactFactory.Versioned.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace GetcuReone.Cdi.FactFactory
 {
     /// <summary>
     /// Fact factory.
     /// </summary>
-    public class GrFactFactory : VersionedFactFactoryBase<VersionedFactBase, VersionedFactContainer, GrFactRule, GrFactRuleCollection, GrWantAction>
+    public class GrFactFactory : VersionedFactFactoryBase<FactRule, FactRuleCollection, WantAction, VersionedFactContainer>
     {
-        private readonly Func<List<IVersionFact>> _getAllVersionFactsFunc;
-
-        /// <summary>
-        /// Action for logging.
-        /// </summary>
-        public Action<string> WriteLogAction { get; set; }
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="container"></param>
-        /// <param name="rulles"></param>
-        /// <param name="getAllVersionFactsFunc">Function that returns all versioned facts used in the rules.</param>
-        public GrFactFactory(VersionedFactContainer container, GrFactRuleCollection rulles, Func<List<IVersionFact>> getAllVersionFactsFunc)
-        {
-            _getAllVersionFactsFunc = getAllVersionFactsFunc;
-            Container = container;
-            Rules = rulles;
-        }
-
-        /// <summary>
-        /// Container.
-        /// </summary>
-        public override VersionedFactContainer Container { get; }
+        internal readonly GrFactRulesProviderBase _provider;
 
         /// <summary>
         /// Rule collection.
         /// </summary>
-        public override GrFactRuleCollection Rules { get; }
+        public override FactRuleCollection Rules { get; }
 
         /// <summary>
-        /// Derive the facts.
+        /// Constructor.
         /// </summary>
-        public override void Derive()
+        /// <param name="provider"></param>
+        public GrFactFactory(GrFactRulesProviderBase provider)
         {
-            if (WriteLogAction != null)
-            {
-                StringBuilder stringBuilder = new StringBuilder();
-
-                stringBuilder.AppendLine("FactFactory | Derive");
-
-                if (!Container.IsNullOrEmpty())
-                {
-                    stringBuilder.Append("There are facts in the container: " + string.Join(", ", Container.Select(fact => fact.GetFactType().FactName)));
-                }
-                else
-                    stringBuilder.Append("No facts in container.");
-
-                WriteLogAction(stringBuilder.ToString());
-            }
-
-            base.Derive();
+            _provider = provider;
+            Rules = provider.GetRules();
         }
 
-        /// <summary>
-        /// Creation method <see cref="IWantAction{TFact}"/>.
-        /// </summary>
-        /// <param name="wantAction">action taken after deriving a fact.</param>
-        /// <param name="factTypes">facts required to launch an action.</param>
-        /// <returns></returns>
-        protected override GrWantAction CreateWantAction(Action<IFactContainer<VersionedFactBase>> wantAction, IReadOnlyCollection<IFactType> factTypes)
+        /// <inheritdoc/>
+        protected override IEnumerable<IFact> GetDefaultFacts(IWantActionContext<WantAction, VersionedFactContainer> context)
         {
-            return new GrWantAction(wantAction, factTypes) { WriteLogAction = WriteLogAction };
+            return _provider.GetDefaultFacts();
         }
 
-        /// <summary>
-        /// Returns instances of all used versions.
-        /// </summary>
-        /// <returns></returns>
-        protected override IEnumerable<IVersionFact> GetAllVersions()
+        /// <inheritdoc/>
+        protected override WantAction CreateWantAction(Action<IEnumerable<IFact>> wantAction, List<IFactType> factTypes, FactWorkOption option)
         {
-            return _getAllVersionFactsFunc?.Invoke() ?? Enumerable.Empty<IVersionFact>();
+            return new WantAction(wantAction, factTypes, option);
         }
 
-        /// <summary>
-        /// Get fact type.
-        /// </summary>
-        /// <typeparam name="TGetFact"></typeparam>
-        /// <returns></returns>
-        protected override IFactType GetFactType<TGetFact>()
+        /// <inheritdoc/>
+        protected override WantAction CreateWantAction(Func<IEnumerable<IFact>, ValueTask> wantAction, List<IFactType> factTypes, FactWorkOption option)
         {
-            return new FactType<TGetFact>();
+            return new WantAction(wantAction, factTypes, option);
+        }
+
+        /// <inheritdoc/>
+        protected override VersionedFactContainer GetDefaultContainer()
+        {
+            return new VersionedFactContainer();
+        }
+
+        /// <inheritdoc/>
+        public override ISingleEntityOperations GetSingleEntityOperations()
+        {
+            return GetFacade<GrSingleEntityOperationsFacade>();
         }
     }
 }
