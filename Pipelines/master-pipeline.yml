@@ -29,9 +29,9 @@ variables:
   value: $[variables['Master_Minor']]
 - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
   - name: 'patchVersion'
-    value: $[counter(format('{0}.{1}', variables.majorVersion, variables.minorVersion), 0)]
+    value: '0'
   - name: 'buildName'
-    value: $[format('{0}-1.0.0', variables['Build.DefinitionName'], variables['majorVersion'], variables['minorVersion'], variables['patchVersion'])]
+    value: $[format('{0}-{1}.{2}.{3}', variables['Build.DefinitionName'], variables['majorVersion'], variables['minorVersion'], variables['patchVersion'])]
 - ${{ if not(eq(variables['Build.SourceBranchName'], 'master')) }}:
   - name: 'sourceBranchName'
     value: $[replace(variables['System.PullRequest.SourceBranch'], 'refs/heads/', '')]
