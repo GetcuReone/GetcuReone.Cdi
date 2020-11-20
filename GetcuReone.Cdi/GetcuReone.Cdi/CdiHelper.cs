@@ -2,9 +2,6 @@
 using GetcuReone.Cdm.Errors;
 using GetcuReone.ComboPatterns.Interfaces;
 using GetcuReone.FactFactory.Interfaces;
-using GetcuReone.FactFactory.Versioned;
-using GetcuReone.FactFactory.Versioned.BaseEntities;
-using GetcuReone.FactFactory.Versioned.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -47,7 +44,7 @@ namespace GetcuReone.Cdi
         /// <typeparam name="TFact"></typeparam>
         /// <param name="container"></param>
         /// <param name="fact"></param>
-        public static void UpdateFact<TFact>(this VersionedFactContainerBase container, TFact fact)
+        public static void UpdateFact<TFact>(this IFactContainer container, TFact fact)
             where TFact : IFact
         {
             if (container.TryGetFact(out TFact fact1))
