@@ -48,7 +48,7 @@ namespace GetcuReone.Cdi
         public virtual GrFactFactory GetFactFactory<TFactRulesProvider>(bool needNewFactory = false)
             where TFactRulesProvider : GrFactRulesProviderBase, new()
         {
-            if (_grFactFactory == null || needNewFactory || !(_grFactFactory._provider is TFactRulesProvider))
+            if (_grFactFactory == null || needNewFactory || !_grFactFactory.IsRulesProvider<TFactRulesProvider>())
                 _grFactFactory = CdiHelper.CreateFactFactory<TFactRulesProvider>(this);
             return _grFactFactory;
         }

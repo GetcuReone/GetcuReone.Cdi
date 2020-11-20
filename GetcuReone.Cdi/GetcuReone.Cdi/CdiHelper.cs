@@ -31,6 +31,17 @@ namespace GetcuReone.Cdi
         }
 
         /// <summary>
+        /// Provider type check.
+        /// </summary>
+        /// <param name="factFactory"></param>
+        /// <typeparam name="TRulesProvider"></typeparam>
+        /// <returns></returns>
+        public static bool IsRulesProvider<TRulesProvider>(this GrFactFactory factFactory)
+        {
+            return factFactory._provider is TRulesProvider;
+        }
+
+        /// <summary>
         /// Update or add fact.
         /// </summary>
         /// <typeparam name="TFact"></typeparam>
