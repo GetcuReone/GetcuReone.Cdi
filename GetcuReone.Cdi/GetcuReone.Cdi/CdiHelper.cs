@@ -42,6 +42,7 @@ namespace GetcuReone.Cdi
         /// Update or add fact.
         /// </summary>
         /// <typeparam name="TFact"></typeparam>
+        /// <typeparam name="TFactContainer"></typeparam>
         /// <param name="container"></param>
         /// <param name="fact"></param>
         public static void UpdateFact<TFactContainer, TFact>(this TFactContainer container, TFact fact)
