@@ -44,7 +44,8 @@ namespace GetcuReone.Cdi
         /// <typeparam name="TFact"></typeparam>
         /// <param name="container"></param>
         /// <param name="fact"></param>
-        public static void UpdateFact<TFact>(this IFactContainer container, TFact fact)
+        public static void UpdateFact<TFactContainer, TFact>(this TFactContainer container, TFact fact)
+            where TFactContainer : IFactContainer
             where TFact : IFact
         {
             if (container.TryGetFact(out TFact fact1))
