@@ -15,14 +15,22 @@
             </summary>
             <typeparam name="TRulesProvider"></typeparam>
             <param name="factory"></param>
-            <param name="container"></param>
             <returns></returns>
         </member>
-        <member name="M:GetcuReone.Cdi.CdiHelper.UpdateFact``1(GetcuReone.FactFactory.Versioned.BaseEntities.VersionedFactContainerBase,``0)">
+        <member name="M:GetcuReone.Cdi.CdiHelper.IsRulesProvider``1(GetcuReone.Cdi.FactFactory.GrFactFactory)">
+            <summary>
+            Provider type check.
+            </summary>
+            <param name="factFactory"></param>
+            <typeparam name="TRulesProvider"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:GetcuReone.Cdi.CdiHelper.UpdateFact``2(``0,``1)">
             <summary>
             Update or add fact.
             </summary>
             <typeparam name="TFact"></typeparam>
+            <typeparam name="TFactContainer"></typeparam>
             <param name="container"></param>
             <param name="fact"></param>
         </member>
