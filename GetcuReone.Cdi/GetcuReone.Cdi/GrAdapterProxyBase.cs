@@ -1,4 +1,5 @@
 ﻿using GetcuReone.Cdo.Logging;
+using GetcuReone.ComboPatterns.Adapter;
 using Newtonsoft.Json;
 using NLog;
 using System;
@@ -9,7 +10,7 @@ namespace GetcuReone.Cdi
     /// <summary>
     /// Base class for adapters.
     /// </summary>
-    public abstract class GrAdapterProxyBase<TProxy> : ComboPatterns.Adapter.AdapterProxyBase<TProxy>
+    public abstract class GrAdapterProxyBase<TProxy> : AdapterProxyBase<TProxy>
     {
         /// <summary>
         /// Adapter name.
@@ -98,7 +99,7 @@ namespace GetcuReone.Cdi
     /// <summary>
     /// Base class for adapters.
     /// </summary>
-    public abstract class GrAdapterProxyBase<TProxy, TProxyParam> : ComboPatterns.Adapter.AdapterProxyBase<TProxy, TProxyParam>
+    public abstract class GrAdapterProxyBase<TProxy, TProxyParam> : AdapterProxyBase<TProxy, TProxyParam>
     {
         /// <summary>
         /// Adapter name.
