@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+    <Import Project="..\.buildTools\GetcuReone.Lib.props" />
+
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <RootNamespace>GetcuReone.Cdi</RootNamespace>
-        <DocumentationFile>GetcuReone.Cdi.xml</DocumentationFile>
 
-        <Authors>Itua Juel-Gaben</Authors>
         <PackageId>GetcuReone.Cdi</PackageId>
         <Product>GetcuReone.Cdi</Product>
         <Description>Common Domain Infrastructure.</Description>
@@ -28,14 +27,6 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <SignAssembly>true</SignAssembly>
-        <AssemblyOriginatorKeyFile>$(snkFilePath)</AssemblyOriginatorKeyFile>
-        <DelaySign>false</DelaySign>
-        <AssemblyVersion>$(majorVersion).$(minorVersion).0.0</AssemblyVersion>
-        <FileVersion>$(majorVersion).$(minorVersion).0.0</FileVersion>
-    </PropertyGroup>
-
     <ItemGroup>
         <None Include="..\..\LICENSE.txt">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -50,8 +41,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="GetcuReone.FactFactory" Version="[2.1.0,)" />
-        <PackageReference Include="GetcuReone.Cdo.Logging" Version="[1.1.1,)" />
+        <PackageReference Include="GetcuReone.FactFactory" Version="[3.0.0,)" />
+        <PackageReference Include="GetcuReone.Cdo.Logging" Version="[1.1.4,)" />
         <PackageReference Include="Newtonsoft.Json" Version="[12.0.3,)" />
     </ItemGroup>
 
