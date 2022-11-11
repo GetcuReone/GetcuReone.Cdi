@@ -1,7 +1,11 @@
 ﻿using GetcuReone.ComboPatterns.Adapter;
 using GetcuReone.ComboPatterns.Interfaces;
+using GetcuReone.FactFactory;
 using GetcuReone.FactFactory.Entities;
 using GetcuReone.FactFactory.Interfaces;
+using GetcuReone.FactFactory.Interfaces.Operations;
+using GetcuReone.FactFactory.Versioned.Facades.SingleEntityOperations;
+using System;
 using System.Collections.Generic;
 
 namespace GetcuReone.Cdi.FactFactory
@@ -9,7 +13,7 @@ namespace GetcuReone.Cdi.FactFactory
     /// <summary>
     /// Base class for provider.
     /// </summary>
-    public abstract class GrFactRulesProviderBase : IFacadeCreation, IAdapterCreation
+    public abstract class BaseGrFactRulesProvider : IGrFactRulesProvider, IFacadeCreation, IAdapterCreation
     {
         /// <summary>
         /// Factory.
@@ -34,16 +38,22 @@ namespace GetcuReone.Cdi.FactFactory
             return ComboPatterns.Facade.FacadeBase.Create<TFacade>(Factory);
         }
 
-        /// <summary>
-        /// Get default facts.
-        /// </summary>
-        /// <returns></returns>
+        /// <inheritdoc />
         public abstract IEnumerable<IFact> GetDefaultFacts();
 
-        /// <summary>
-        /// Get rules.
-        /// </summary>
-        /// <returns></returns>
-        public abstract FactRuleCollection GetRules();
+        /// <inheritdoc />
+        public abstract IFactRuleCollection GetRules();
+
+        /// <inheritdoc />
+        public virtual ISingleEntityOperations GetSingleEntityOperations()
+        {
+            return GetFacade<VersionedSingleEntityOperationsFacade>();
+        }
+
+        /// <inheritdoc />
+        public virtual IFactContainer GetDefaultContainer()
+        {
+            return new FactContainer();
+        }
     }
 }

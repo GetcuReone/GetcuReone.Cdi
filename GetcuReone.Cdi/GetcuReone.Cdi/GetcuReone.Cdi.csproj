@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="..\.buildTools\GetcuReone.Lib.props" />
+    <Import Project="..\.build-tools\GetcuReone.Lib.props" />
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,8 +11,11 @@
         <RepositoryUrl>https://github.com/GetcuReone/GetcuReone.Cdi</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>getcureone cdi</PackageTags>
-        <PackageReleaseNotes>Changes:
-        - fix assembly version
+        <PackageReleaseNotes>
+            Changes:
+            - support for changes in the GetcuReone.FactFactory.5.0.0 library
+            - renaming base classes ('base' is now a prefix)
+            - create interface IGrFactRulesProvider
         </PackageReleaseNotes>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageProjectUrl>https://github.com/GetcuReone/GetcuReone.Cdi</PackageProjectUrl>
@@ -43,9 +46,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="GetcuReone.FactFactory" Version="[3.0.0,)" />
-        <PackageReference Include="GetcuReone.Cdo.Logging" Version="[2.0.0,)" />
-        <PackageReference Include="Newtonsoft.Json" Version="[12.0.3,)" />
+        <PackageReference Include="GetcuReone.FactFactory" Version="5.0.0" />
+        <PackageReference Include="GetcuReone.Cdo.Logging" Version="2.0.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
 
 </Project>
