@@ -10,7 +10,7 @@ namespace GetcuReone.Cdi
     /// <summary>
     /// Base clas for facades.
     /// </summary>
-    public abstract class GrFacadeBase : ComboPatterns.Facade.FacadeBase, IAdapterCreation
+    public abstract class BaseGrFacade : ComboPatterns.Facade.FacadeBase, IAdapterCreation
     {
         /// <summary>
         /// Facade name.

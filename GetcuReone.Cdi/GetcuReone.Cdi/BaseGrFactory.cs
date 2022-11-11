@@ -1,20 +1,25 @@
-﻿using GetcuReone.Cdo.Logging;
+﻿using GetcuReone.Cdi.FactFactory;
+using GetcuReone.Cdo.Logging;
 using GetcuReone.ComboPatterns.Adapter;
-using Newtonsoft.Json;
+using GetcuReone.ComboPatterns.Facade;
+using GetcuReone.ComboPatterns.Factory;
+using GetcuReone.ComboPatterns.Interfaces;
 using NLog;
 using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
 
 namespace GetcuReone.Cdi
 {
-    /// <summary>
-    /// Base class for adapters.
-    /// </summary>
-    public abstract class GrAdapterBase : AdapterBase
+    /// <inheritdoc/>
+    /// <remarks>Added logging.</remarks>
+    public abstract class BaseGrFactory : FactoryBase, IFacadeCreation, IAdapterCreation
     {
+        private IGrFactFactory _grFactFactory;
+
         /// <summary>
-        /// Adapter name.
+        /// Factory name.
         /// </summary>
-        protected abstract string AdapterName { get; }
+        protected abstract string FactoryName { get; }
 
         /// <summary>
         /// Logger.
@@ -22,13 +27,40 @@ namespace GetcuReone.Cdi
         protected NLogAdapter NLogger => _nLogAdapter ?? (_nLogAdapter = GetAdapter<NLogAdapter>());
         private NLogAdapter _nLogAdapter;
 
+        /// <inheritdoc/>
+        public virtual TAdapter GetAdapter<TAdapter>() where TAdapter : IAdapter, new()
+        {
+            return AdapterBase.Create<TAdapter>(this);
+        }
+
+        /// <inheritdoc/>
+        public virtual TFacade GetFacade<TFacade>() where TFacade : IFacade, new()
+        {
+            return FacadeBase.Create<TFacade>(this);
+        }
+
+        /// <summary>
+        /// Get fact factory.
+        /// </summary>
+        /// <typeparam name="TFactRulesProvider"></typeparam>
+        /// <param name="needNewFactory"></param>
+        /// <returns></returns>
+        public virtual IGrFactFactory GetFactFactory<TFactRulesProvider>(bool needNewFactory = false)
+            where TFactRulesProvider : IGrFactRulesProvider, new()
+        {
+            if (_grFactFactory == null || needNewFactory || !(_grFactFactory.Provider is TFactRulesProvider))
+                _grFactFactory = CdiHelper.CreateFactFactory<TFactRulesProvider>(this);
+
+            return _grFactFactory;
+        }
+
         /// <summary>
         /// Write log.
         /// </summary>
         /// <param name="messageFunc"></param>
         protected virtual void WriteLog(LogMessageGenerator messageFunc)
         {
-            NLogger.Debug(messageFunc);
+            NLogger.Info(messageFunc);
         }
 
         /// <summary>
@@ -37,7 +69,7 @@ namespace GetcuReone.Cdi
         /// <param name="methodName"></param>
         protected virtual void CallMethodLogging([CallerMemberName] string methodName = "")
         {
-            WriteLog(() => $"{Tags.Adapter}{Tags.Call} {AdapterName}.{methodName}");
+            WriteLog(() => $"{Tags.Factory}{Tags.Call} {FactoryName}.{methodName}");
         }
 
         /// <summary>
@@ -48,7 +80,7 @@ namespace GetcuReone.Cdi
         /// <param name="parameter"></param>
         protected virtual void CallMethodLogging<TParameter>(TParameter parameter, [CallerMemberName] string methodName = "")
         {
-            WriteLog(() => $"{Tags.Adapter}{Tags.Call} {AdapterName}.{methodName}\nparameter: {JsonConvert.SerializeObject(parameter)}");
+            WriteLog(() => $"{Tags.Factory}{Tags.Call} {FactoryName}.{methodName}\nparameter: {JsonConvert.SerializeObject(parameter)}");
         }
 
         /// <summary>
@@ -56,7 +88,7 @@ namespace GetcuReone.Cdi
         /// </summary>
         protected virtual void ReturnLogging([CallerMemberName] string methodName = "")
         {
-            WriteLog(() => $"{Tags.Adapter}{Tags.Result} {AdapterName}.{methodName}:\nresult: void");
+            WriteLog(() => $"{Tags.Factory}{Tags.Result} {FactoryName}.{methodName}:\nresult: void");
         }
 
         /// <summary>
@@ -68,7 +100,7 @@ namespace GetcuReone.Cdi
         /// <returns></returns>
         protected virtual TResult ReturnLogging<TResult>(TResult returnedObj, [CallerMemberName] string methodName = "")
         {
-            WriteLog(() => $"{Tags.Adapter}{Tags.Result} {AdapterName}.{methodName}\nparameter: {JsonConvert.SerializeObject(returnedObj)}");
+            WriteLog(() => $"{Tags.Factory}{Tags.Result} {FactoryName}.{methodName}\nparameter: {JsonConvert.SerializeObject(returnedObj)}");
             return returnedObj;
         }
 
@@ -81,7 +113,7 @@ namespace GetcuReone.Cdi
         /// <returns></returns>
         protected virtual TResult ReturnNotLogging<TResult>(TResult returnedObj, [CallerMemberName] string methodName = "")
         {
-            WriteLog(() => $"{Tags.Adapter}{Tags.Result} {AdapterName}.{methodName}:\nresult: not logging obj");
+            WriteLog(() => $"{Tags.Factory}{Tags.Result} {FactoryName}.{methodName}:\nresult: not logging obj");
             return returnedObj;
         }
     }
