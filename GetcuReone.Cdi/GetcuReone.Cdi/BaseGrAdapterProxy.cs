@@ -10,7 +10,7 @@ namespace GetcuReone.Cdi
     /// <summary>
     /// Base class for adapters.
     /// </summary>
-    public abstract class GrAdapterProxyBase<TProxy> : AdapterProxyBase<TProxy>
+    public abstract class BaseGrAdapterProxy<TProxy> : AdapterProxyBase<TProxy>
     {
         /// <summary>
         /// Adapter name.
@@ -27,10 +27,7 @@ namespace GetcuReone.Cdi
         /// Constructor.
         /// </summary>
         /// <param name="createProxyFunc"></param>
-        protected GrAdapterProxyBase(Func<TProxy> createProxyFunc)
-            : base(createProxyFunc)
-        {
-        }
+        protected BaseGrAdapterProxy(Func<TProxy> createProxyFunc) : base(createProxyFunc) { }
 
         /// <summary>
         /// Write log.
@@ -116,10 +113,7 @@ namespace GetcuReone.Cdi
         /// Constructor.
         /// </summary>
         /// <param name="createProxyFunc"></param>
-        protected GrAdapterProxyBase(Func<TProxyParam, TProxy> createProxyFunc)
-            : base(createProxyFunc)
-        {
-        }
+        protected GrAdapterProxyBase(Func<TProxyParam, TProxy> createProxyFunc) : base(createProxyFunc) { }
 
         /// <summary>
         /// Write log.

@@ -1,65 +1,50 @@
-﻿using GetcuReone.FactFactory.Entities;
+﻿using GetcuReone.FactFactory;
 using GetcuReone.FactFactory.Interfaces;
 using GetcuReone.FactFactory.Interfaces.Context;
 using GetcuReone.FactFactory.Interfaces.Operations;
-using GetcuReone.FactFactory.Versioned;
-using GetcuReone.FactFactory.Versioned.Entities;
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace GetcuReone.Cdi.FactFactory
 {
     /// <summary>
     /// Fact factory.
     /// </summary>
-    public class GrFactFactory : VersionedFactFactoryBase<FactRule, FactRuleCollection, WantAction, VersionedFactContainer>
+    public class GrFactFactory : BaseFactFactory, IGrFactFactory
     {
-        internal readonly GrFactRulesProviderBase _provider;
+        /// <inheritdoc/>
+        public IGrFactRulesProvider Provider { get; }
 
         /// <summary>
         /// Rule collection.
         /// </summary>
-        public override FactRuleCollection Rules { get; }
+        public override IFactRuleCollection Rules { get; }
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="provider"></param>
-        public GrFactFactory(GrFactRulesProviderBase provider)
+        public GrFactFactory(IGrFactRulesProvider provider)
         {
-            _provider = provider;
+            Provider = provider;
             Rules = provider.GetRules();
         }
 
         /// <inheritdoc/>
-        protected override IEnumerable<IFact> GetDefaultFacts(IWantActionContext<WantAction, VersionedFactContainer> context)
+        protected override IEnumerable<IFact> GetDefaultFacts(IWantActionContext context)
         {
-            return _provider.GetDefaultFacts();
+            return Provider.GetDefaultFacts();
         }
 
         /// <inheritdoc/>
-        protected override WantAction CreateWantAction(Action<IEnumerable<IFact>> wantAction, List<IFactType> factTypes, FactWorkOption option)
+        protected override IFactContainer GetDefaultContainer()
         {
-            return new WantAction(wantAction, factTypes, option);
+            return Provider.GetDefaultContainer();
         }
 
         /// <inheritdoc/>
-        protected override WantAction CreateWantAction(Func<IEnumerable<IFact>, ValueTask> wantAction, List<IFactType> factTypes, FactWorkOption option)
+        protected override ISingleEntityOperations GetSingleEntityOperations()
         {
-            return new WantAction(wantAction, factTypes, option);
-        }
-
-        /// <inheritdoc/>
-        protected override VersionedFactContainer GetDefaultContainer()
-        {
-            return new VersionedFactContainer();
-        }
-
-        /// <inheritdoc/>
-        public override ISingleEntityOperations GetSingleEntityOperations()
-        {
-            return GetFacade<GrSingleEntityOperationsFacade>();
+            return Provider.GetSingleEntityOperations();
         }
     }
 }
