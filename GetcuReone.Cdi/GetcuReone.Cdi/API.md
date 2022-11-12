@@ -12,6 +12,26 @@
   - [ReturnLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-BaseGrAdapter-ReturnLogging``1-``0,System-String- 'GetcuReone.Cdi.BaseGrAdapter.ReturnLogging``1(``0,System.String)')
   - [ReturnNotLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-BaseGrAdapter-ReturnNotLogging``1-``0,System-String- 'GetcuReone.Cdi.BaseGrAdapter.ReturnNotLogging``1(``0,System.String)')
   - [WriteLog(messageFunc)](#M-GetcuReone-Cdi-BaseGrAdapter-WriteLog-NLog-LogMessageGenerator- 'GetcuReone.Cdi.BaseGrAdapter.WriteLog(NLog.LogMessageGenerator)')
+- [BaseGrAdapterProxy\`1](#T-GetcuReone-Cdi-BaseGrAdapterProxy`1 'GetcuReone.Cdi.BaseGrAdapterProxy`1')
+  - [#ctor(createProxyFunc)](#M-GetcuReone-Cdi-BaseGrAdapterProxy`1-#ctor-System-Func{`0}- 'GetcuReone.Cdi.BaseGrAdapterProxy`1.#ctor(System.Func{`0})')
+  - [AdapterName](#P-GetcuReone-Cdi-BaseGrAdapterProxy`1-AdapterName 'GetcuReone.Cdi.BaseGrAdapterProxy`1.AdapterName')
+  - [NLogger](#P-GetcuReone-Cdi-BaseGrAdapterProxy`1-NLogger 'GetcuReone.Cdi.BaseGrAdapterProxy`1.NLogger')
+  - [CallMethodLogging(methodName)](#M-GetcuReone-Cdi-BaseGrAdapterProxy`1-CallMethodLogging-System-String- 'GetcuReone.Cdi.BaseGrAdapterProxy`1.CallMethodLogging(System.String)')
+  - [CallMethodLogging\`\`1(methodName,parameter)](#M-GetcuReone-Cdi-BaseGrAdapterProxy`1-CallMethodLogging``1-``0,System-String- 'GetcuReone.Cdi.BaseGrAdapterProxy`1.CallMethodLogging``1(``0,System.String)')
+  - [ReturnLogging()](#M-GetcuReone-Cdi-BaseGrAdapterProxy`1-ReturnLogging-System-String- 'GetcuReone.Cdi.BaseGrAdapterProxy`1.ReturnLogging(System.String)')
+  - [ReturnLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-BaseGrAdapterProxy`1-ReturnLogging``1-``0,System-String- 'GetcuReone.Cdi.BaseGrAdapterProxy`1.ReturnLogging``1(``0,System.String)')
+  - [ReturnNotLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-BaseGrAdapterProxy`1-ReturnNotLogging``1-``0,System-String- 'GetcuReone.Cdi.BaseGrAdapterProxy`1.ReturnNotLogging``1(``0,System.String)')
+  - [WriteLog(messageFunc)](#M-GetcuReone-Cdi-BaseGrAdapterProxy`1-WriteLog-NLog-LogMessageGenerator- 'GetcuReone.Cdi.BaseGrAdapterProxy`1.WriteLog(NLog.LogMessageGenerator)')
+- [BaseGrFacade](#T-GetcuReone-Cdi-BaseGrFacade 'GetcuReone.Cdi.BaseGrFacade')
+  - [FacadeName](#P-GetcuReone-Cdi-BaseGrFacade-FacadeName 'GetcuReone.Cdi.BaseGrFacade.FacadeName')
+  - [NLogger](#P-GetcuReone-Cdi-BaseGrFacade-NLogger 'GetcuReone.Cdi.BaseGrFacade.NLogger')
+  - [CallMethodLogging(methodName)](#M-GetcuReone-Cdi-BaseGrFacade-CallMethodLogging-System-String- 'GetcuReone.Cdi.BaseGrFacade.CallMethodLogging(System.String)')
+  - [CallMethodLogging\`\`1(methodName,parameter)](#M-GetcuReone-Cdi-BaseGrFacade-CallMethodLogging``1-``0,System-String- 'GetcuReone.Cdi.BaseGrFacade.CallMethodLogging``1(``0,System.String)')
+  - [GetAdapter\`\`1()](#M-GetcuReone-Cdi-BaseGrFacade-GetAdapter``1 'GetcuReone.Cdi.BaseGrFacade.GetAdapter``1')
+  - [ReturnLogging()](#M-GetcuReone-Cdi-BaseGrFacade-ReturnLogging-System-String- 'GetcuReone.Cdi.BaseGrFacade.ReturnLogging(System.String)')
+  - [ReturnLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-BaseGrFacade-ReturnLogging``1-``0,System-String- 'GetcuReone.Cdi.BaseGrFacade.ReturnLogging``1(``0,System.String)')
+  - [ReturnNotLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-BaseGrFacade-ReturnNotLogging``1-``0,System-String- 'GetcuReone.Cdi.BaseGrFacade.ReturnNotLogging``1(``0,System.String)')
+  - [WriteLog(messageFunc)](#M-GetcuReone-Cdi-BaseGrFacade-WriteLog-NLog-LogMessageGenerator- 'GetcuReone.Cdi.BaseGrFacade.WriteLog(NLog.LogMessageGenerator)')
 - [BaseGrFactRulesProvider](#T-GetcuReone-Cdi-FactFactory-BaseGrFactRulesProvider 'GetcuReone.Cdi.FactFactory.BaseGrFactRulesProvider')
   - [Factory](#P-GetcuReone-Cdi-FactFactory-BaseGrFactRulesProvider-Factory 'GetcuReone.Cdi.FactFactory.BaseGrFactRulesProvider.Factory')
   - [GetAdapter\`\`1()](#M-GetcuReone-Cdi-FactFactory-BaseGrFactRulesProvider-GetAdapter``1 'GetcuReone.Cdi.FactFactory.BaseGrFactRulesProvider.GetAdapter``1')
@@ -20,6 +40,18 @@
   - [GetFacade\`\`1()](#M-GetcuReone-Cdi-FactFactory-BaseGrFactRulesProvider-GetFacade``1 'GetcuReone.Cdi.FactFactory.BaseGrFactRulesProvider.GetFacade``1')
   - [GetRules()](#M-GetcuReone-Cdi-FactFactory-BaseGrFactRulesProvider-GetRules 'GetcuReone.Cdi.FactFactory.BaseGrFactRulesProvider.GetRules')
   - [GetSingleEntityOperations()](#M-GetcuReone-Cdi-FactFactory-BaseGrFactRulesProvider-GetSingleEntityOperations 'GetcuReone.Cdi.FactFactory.BaseGrFactRulesProvider.GetSingleEntityOperations')
+- [BaseGrFactory](#T-GetcuReone-Cdi-BaseGrFactory 'GetcuReone.Cdi.BaseGrFactory')
+  - [FactoryName](#P-GetcuReone-Cdi-BaseGrFactory-FactoryName 'GetcuReone.Cdi.BaseGrFactory.FactoryName')
+  - [NLogger](#P-GetcuReone-Cdi-BaseGrFactory-NLogger 'GetcuReone.Cdi.BaseGrFactory.NLogger')
+  - [CallMethodLogging(methodName)](#M-GetcuReone-Cdi-BaseGrFactory-CallMethodLogging-System-String- 'GetcuReone.Cdi.BaseGrFactory.CallMethodLogging(System.String)')
+  - [CallMethodLogging\`\`1(methodName,parameter)](#M-GetcuReone-Cdi-BaseGrFactory-CallMethodLogging``1-``0,System-String- 'GetcuReone.Cdi.BaseGrFactory.CallMethodLogging``1(``0,System.String)')
+  - [GetAdapter\`\`1()](#M-GetcuReone-Cdi-BaseGrFactory-GetAdapter``1 'GetcuReone.Cdi.BaseGrFactory.GetAdapter``1')
+  - [GetFacade\`\`1()](#M-GetcuReone-Cdi-BaseGrFactory-GetFacade``1 'GetcuReone.Cdi.BaseGrFactory.GetFacade``1')
+  - [GetFactFactory\`\`1(needNewFactory)](#M-GetcuReone-Cdi-BaseGrFactory-GetFactFactory``1-System-Boolean- 'GetcuReone.Cdi.BaseGrFactory.GetFactFactory``1(System.Boolean)')
+  - [ReturnLogging()](#M-GetcuReone-Cdi-BaseGrFactory-ReturnLogging-System-String- 'GetcuReone.Cdi.BaseGrFactory.ReturnLogging(System.String)')
+  - [ReturnLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-BaseGrFactory-ReturnLogging``1-``0,System-String- 'GetcuReone.Cdi.BaseGrFactory.ReturnLogging``1(``0,System.String)')
+  - [ReturnNotLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-BaseGrFactory-ReturnNotLogging``1-``0,System-String- 'GetcuReone.Cdi.BaseGrFactory.ReturnNotLogging``1(``0,System.String)')
+  - [WriteLog(messageFunc)](#M-GetcuReone-Cdi-BaseGrFactory-WriteLog-NLog-LogMessageGenerator- 'GetcuReone.Cdi.BaseGrFactory.WriteLog(NLog.LogMessageGenerator)')
 - [CdiHelper](#T-GetcuReone-Cdi-CdiHelper 'GetcuReone.Cdi.CdiHelper')
   - [CreateException(code,reason)](#M-GetcuReone-Cdi-CdiHelper-CreateException-System-String,System-String- 'GetcuReone.Cdi.CdiHelper.CreateException(System.String,System.String)')
   - [CreateException(details)](#M-GetcuReone-Cdi-CdiHelper-CreateException-System-Collections-Generic-List{GetcuReone-Cdm-Errors-ErrorDetail}- 'GetcuReone.Cdi.CdiHelper.CreateException(System.Collections.Generic.List{GetcuReone.Cdm.Errors.ErrorDetail})')
@@ -29,16 +61,6 @@
   - [IsNullOrEmpty\`\`1(items)](#M-GetcuReone-Cdi-Extensions-EnumerableExtensions-IsNullOrEmpty``1-System-Collections-Generic-IEnumerable{``0}- 'GetcuReone.Cdi.Extensions.EnumerableExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})')
 - [FactContainerExtensions](#T-GetcuReone-Cdi-Extensions-FactContainerExtensions 'GetcuReone.Cdi.Extensions.FactContainerExtensions')
   - [UpdateFact\`\`2(container,fact)](#M-GetcuReone-Cdi-Extensions-FactContainerExtensions-UpdateFact``2-``0,``1- 'GetcuReone.Cdi.Extensions.FactContainerExtensions.UpdateFact``2(``0,``1)')
-- [GrAdapterProxyBase\`1](#T-GetcuReone-Cdi-GrAdapterProxyBase`1 'GetcuReone.Cdi.GrAdapterProxyBase`1')
-  - [#ctor(createProxyFunc)](#M-GetcuReone-Cdi-GrAdapterProxyBase`1-#ctor-System-Func{`0}- 'GetcuReone.Cdi.GrAdapterProxyBase`1.#ctor(System.Func{`0})')
-  - [AdapterName](#P-GetcuReone-Cdi-GrAdapterProxyBase`1-AdapterName 'GetcuReone.Cdi.GrAdapterProxyBase`1.AdapterName')
-  - [NLogger](#P-GetcuReone-Cdi-GrAdapterProxyBase`1-NLogger 'GetcuReone.Cdi.GrAdapterProxyBase`1.NLogger')
-  - [CallMethodLogging(methodName)](#M-GetcuReone-Cdi-GrAdapterProxyBase`1-CallMethodLogging-System-String- 'GetcuReone.Cdi.GrAdapterProxyBase`1.CallMethodLogging(System.String)')
-  - [CallMethodLogging\`\`1(methodName,parameter)](#M-GetcuReone-Cdi-GrAdapterProxyBase`1-CallMethodLogging``1-``0,System-String- 'GetcuReone.Cdi.GrAdapterProxyBase`1.CallMethodLogging``1(``0,System.String)')
-  - [ReturnLogging()](#M-GetcuReone-Cdi-GrAdapterProxyBase`1-ReturnLogging-System-String- 'GetcuReone.Cdi.GrAdapterProxyBase`1.ReturnLogging(System.String)')
-  - [ReturnLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-GrAdapterProxyBase`1-ReturnLogging``1-``0,System-String- 'GetcuReone.Cdi.GrAdapterProxyBase`1.ReturnLogging``1(``0,System.String)')
-  - [ReturnNotLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-GrAdapterProxyBase`1-ReturnNotLogging``1-``0,System-String- 'GetcuReone.Cdi.GrAdapterProxyBase`1.ReturnNotLogging``1(``0,System.String)')
-  - [WriteLog(messageFunc)](#M-GetcuReone-Cdi-GrAdapterProxyBase`1-WriteLog-NLog-LogMessageGenerator- 'GetcuReone.Cdi.GrAdapterProxyBase`1.WriteLog(NLog.LogMessageGenerator)')
 - [GrAdapterProxyBase\`2](#T-GetcuReone-Cdi-GrAdapterProxyBase`2 'GetcuReone.Cdi.GrAdapterProxyBase`2')
   - [#ctor(createProxyFunc)](#M-GetcuReone-Cdi-GrAdapterProxyBase`2-#ctor-System-Func{`1,`0}- 'GetcuReone.Cdi.GrAdapterProxyBase`2.#ctor(System.Func{`1,`0})')
   - [AdapterName](#P-GetcuReone-Cdi-GrAdapterProxyBase`2-AdapterName 'GetcuReone.Cdi.GrAdapterProxyBase`2.AdapterName')
@@ -49,16 +71,6 @@
   - [ReturnLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-GrAdapterProxyBase`2-ReturnLogging``1-``0,System-String- 'GetcuReone.Cdi.GrAdapterProxyBase`2.ReturnLogging``1(``0,System.String)')
   - [ReturnNotLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-GrAdapterProxyBase`2-ReturnNotLogging``1-``0,System-String- 'GetcuReone.Cdi.GrAdapterProxyBase`2.ReturnNotLogging``1(``0,System.String)')
   - [WriteLog(messageFunc)](#M-GetcuReone-Cdi-GrAdapterProxyBase`2-WriteLog-NLog-LogMessageGenerator- 'GetcuReone.Cdi.GrAdapterProxyBase`2.WriteLog(NLog.LogMessageGenerator)')
-- [GrFacadeBase](#T-GetcuReone-Cdi-GrFacadeBase 'GetcuReone.Cdi.GrFacadeBase')
-  - [FacadeName](#P-GetcuReone-Cdi-GrFacadeBase-FacadeName 'GetcuReone.Cdi.GrFacadeBase.FacadeName')
-  - [NLogger](#P-GetcuReone-Cdi-GrFacadeBase-NLogger 'GetcuReone.Cdi.GrFacadeBase.NLogger')
-  - [CallMethodLogging(methodName)](#M-GetcuReone-Cdi-GrFacadeBase-CallMethodLogging-System-String- 'GetcuReone.Cdi.GrFacadeBase.CallMethodLogging(System.String)')
-  - [CallMethodLogging\`\`1(methodName,parameter)](#M-GetcuReone-Cdi-GrFacadeBase-CallMethodLogging``1-``0,System-String- 'GetcuReone.Cdi.GrFacadeBase.CallMethodLogging``1(``0,System.String)')
-  - [GetAdapter\`\`1()](#M-GetcuReone-Cdi-GrFacadeBase-GetAdapter``1 'GetcuReone.Cdi.GrFacadeBase.GetAdapter``1')
-  - [ReturnLogging()](#M-GetcuReone-Cdi-GrFacadeBase-ReturnLogging-System-String- 'GetcuReone.Cdi.GrFacadeBase.ReturnLogging(System.String)')
-  - [ReturnLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-GrFacadeBase-ReturnLogging``1-``0,System-String- 'GetcuReone.Cdi.GrFacadeBase.ReturnLogging``1(``0,System.String)')
-  - [ReturnNotLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-GrFacadeBase-ReturnNotLogging``1-``0,System-String- 'GetcuReone.Cdi.GrFacadeBase.ReturnNotLogging``1(``0,System.String)')
-  - [WriteLog(messageFunc)](#M-GetcuReone-Cdi-GrFacadeBase-WriteLog-NLog-LogMessageGenerator- 'GetcuReone.Cdi.GrFacadeBase.WriteLog(NLog.LogMessageGenerator)')
 - [GrFactFactory](#T-GetcuReone-Cdi-FactFactory-GrFactFactory 'GetcuReone.Cdi.FactFactory.GrFactFactory')
   - [#ctor(provider)](#M-GetcuReone-Cdi-FactFactory-GrFactFactory-#ctor-GetcuReone-Cdi-FactFactory-IGrFactRulesProvider- 'GetcuReone.Cdi.FactFactory.GrFactFactory.#ctor(GetcuReone.Cdi.FactFactory.IGrFactRulesProvider)')
   - [Provider](#P-GetcuReone-Cdi-FactFactory-GrFactFactory-Provider 'GetcuReone.Cdi.FactFactory.GrFactFactory.Provider')
@@ -66,18 +78,6 @@
   - [GetDefaultContainer()](#M-GetcuReone-Cdi-FactFactory-GrFactFactory-GetDefaultContainer 'GetcuReone.Cdi.FactFactory.GrFactFactory.GetDefaultContainer')
   - [GetDefaultFacts()](#M-GetcuReone-Cdi-FactFactory-GrFactFactory-GetDefaultFacts-GetcuReone-FactFactory-Interfaces-Context-IWantActionContext- 'GetcuReone.Cdi.FactFactory.GrFactFactory.GetDefaultFacts(GetcuReone.FactFactory.Interfaces.Context.IWantActionContext)')
   - [GetSingleEntityOperations()](#M-GetcuReone-Cdi-FactFactory-GrFactFactory-GetSingleEntityOperations 'GetcuReone.Cdi.FactFactory.GrFactFactory.GetSingleEntityOperations')
-- [GrFactoryBase](#T-GetcuReone-Cdi-GrFactoryBase 'GetcuReone.Cdi.GrFactoryBase')
-  - [FactoryName](#P-GetcuReone-Cdi-GrFactoryBase-FactoryName 'GetcuReone.Cdi.GrFactoryBase.FactoryName')
-  - [NLogger](#P-GetcuReone-Cdi-GrFactoryBase-NLogger 'GetcuReone.Cdi.GrFactoryBase.NLogger')
-  - [CallMethodLogging(methodName)](#M-GetcuReone-Cdi-GrFactoryBase-CallMethodLogging-System-String- 'GetcuReone.Cdi.GrFactoryBase.CallMethodLogging(System.String)')
-  - [CallMethodLogging\`\`1(methodName,parameter)](#M-GetcuReone-Cdi-GrFactoryBase-CallMethodLogging``1-``0,System-String- 'GetcuReone.Cdi.GrFactoryBase.CallMethodLogging``1(``0,System.String)')
-  - [GetAdapter\`\`1()](#M-GetcuReone-Cdi-GrFactoryBase-GetAdapter``1 'GetcuReone.Cdi.GrFactoryBase.GetAdapter``1')
-  - [GetFacade\`\`1()](#M-GetcuReone-Cdi-GrFactoryBase-GetFacade``1 'GetcuReone.Cdi.GrFactoryBase.GetFacade``1')
-  - [GetFactFactory\`\`1(needNewFactory)](#M-GetcuReone-Cdi-GrFactoryBase-GetFactFactory``1-System-Boolean- 'GetcuReone.Cdi.GrFactoryBase.GetFactFactory``1(System.Boolean)')
-  - [ReturnLogging()](#M-GetcuReone-Cdi-GrFactoryBase-ReturnLogging-System-String- 'GetcuReone.Cdi.GrFactoryBase.ReturnLogging(System.String)')
-  - [ReturnLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-GrFactoryBase-ReturnLogging``1-``0,System-String- 'GetcuReone.Cdi.GrFactoryBase.ReturnLogging``1(``0,System.String)')
-  - [ReturnNotLogging\`\`1(returnedObj,methodName)](#M-GetcuReone-Cdi-GrFactoryBase-ReturnNotLogging``1-``0,System-String- 'GetcuReone.Cdi.GrFactoryBase.ReturnNotLogging``1(``0,System.String)')
-  - [WriteLog(messageFunc)](#M-GetcuReone-Cdi-GrFactoryBase-WriteLog-NLog-LogMessageGenerator- 'GetcuReone.Cdi.GrFactoryBase.WriteLog(NLog.LogMessageGenerator)')
 - [IGrFactFactory](#T-GetcuReone-Cdi-FactFactory-IGrFactFactory 'GetcuReone.Cdi.FactFactory.IGrFactFactory')
   - [Provider](#P-GetcuReone-Cdi-FactFactory-IGrFactFactory-Provider 'GetcuReone.Cdi.FactFactory.IGrFactFactory.Provider')
 - [IGrFactRulesProvider](#T-GetcuReone-Cdi-FactFactory-IGrFactRulesProvider 'GetcuReone.Cdi.FactFactory.IGrFactRulesProvider')
@@ -222,6 +222,300 @@ Write log.
 | ---- | ---- | ----------- |
 | messageFunc | [NLog.LogMessageGenerator](#T-NLog-LogMessageGenerator 'NLog.LogMessageGenerator') |  |
 
+<a name='T-GetcuReone-Cdi-BaseGrAdapterProxy`1'></a>
+## BaseGrAdapterProxy\`1 `type`
+
+##### Namespace
+
+GetcuReone.Cdi
+
+##### Summary
+
+Base class for adapters.
+
+<a name='M-GetcuReone-Cdi-BaseGrAdapterProxy`1-#ctor-System-Func{`0}-'></a>
+### #ctor(createProxyFunc) `constructor`
+
+##### Summary
+
+Constructor.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| createProxyFunc | [System.Func{\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{`0}') |  |
+
+<a name='P-GetcuReone-Cdi-BaseGrAdapterProxy`1-AdapterName'></a>
+### AdapterName `property`
+
+##### Summary
+
+Adapter name.
+
+<a name='P-GetcuReone-Cdi-BaseGrAdapterProxy`1-NLogger'></a>
+### NLogger `property`
+
+##### Summary
+
+Logger.
+
+<a name='M-GetcuReone-Cdi-BaseGrAdapterProxy`1-CallMethodLogging-System-String-'></a>
+### CallMethodLogging(methodName) `method`
+
+##### Summary
+
+Logs a method call without parameters.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrAdapterProxy`1-CallMethodLogging``1-``0,System-String-'></a>
+### CallMethodLogging\`\`1(methodName,parameter) `method`
+
+##### Summary
+
+Logs a method call with parameter.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodName | [\`\`0](#T-``0 '``0') |  |
+| parameter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TParameter |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrAdapterProxy`1-ReturnLogging-System-String-'></a>
+### ReturnLogging() `method`
+
+##### Summary
+
+Logs no response.
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-GetcuReone-Cdi-BaseGrAdapterProxy`1-ReturnLogging``1-``0,System-String-'></a>
+### ReturnLogging\`\`1(returnedObj,methodName) `method`
+
+##### Summary
+
+Logs the result of a method.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| returnedObj | [\`\`0](#T-``0 '``0') |  |
+| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TResult |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrAdapterProxy`1-ReturnNotLogging``1-``0,System-String-'></a>
+### ReturnNotLogging\`\`1(returnedObj,methodName) `method`
+
+##### Summary
+
+Add information to the log that the object is not logged.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| returnedObj | [\`\`0](#T-``0 '``0') |  |
+| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TResult |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrAdapterProxy`1-WriteLog-NLog-LogMessageGenerator-'></a>
+### WriteLog(messageFunc) `method`
+
+##### Summary
+
+Write log.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| messageFunc | [NLog.LogMessageGenerator](#T-NLog-LogMessageGenerator 'NLog.LogMessageGenerator') |  |
+
+<a name='T-GetcuReone-Cdi-BaseGrFacade'></a>
+## BaseGrFacade `type`
+
+##### Namespace
+
+GetcuReone.Cdi
+
+##### Summary
+
+Base clas for facades.
+
+<a name='P-GetcuReone-Cdi-BaseGrFacade-FacadeName'></a>
+### FacadeName `property`
+
+##### Summary
+
+Facade name.
+
+<a name='P-GetcuReone-Cdi-BaseGrFacade-NLogger'></a>
+### NLogger `property`
+
+##### Summary
+
+Logger.
+
+<a name='M-GetcuReone-Cdi-BaseGrFacade-CallMethodLogging-System-String-'></a>
+### CallMethodLogging(methodName) `method`
+
+##### Summary
+
+Logs a method call without parameters.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrFacade-CallMethodLogging``1-``0,System-String-'></a>
+### CallMethodLogging\`\`1(methodName,parameter) `method`
+
+##### Summary
+
+Logs a method call with parameter.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodName | [\`\`0](#T-``0 '``0') |  |
+| parameter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TParameter |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrFacade-GetAdapter``1'></a>
+### GetAdapter\`\`1() `method`
+
+##### Summary
+
+Get adapter.
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TAdapter |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrFacade-ReturnLogging-System-String-'></a>
+### ReturnLogging() `method`
+
+##### Summary
+
+Logs no response.
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-GetcuReone-Cdi-BaseGrFacade-ReturnLogging``1-``0,System-String-'></a>
+### ReturnLogging\`\`1(returnedObj,methodName) `method`
+
+##### Summary
+
+Logs the result of a method.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| returnedObj | [\`\`0](#T-``0 '``0') |  |
+| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TResult |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrFacade-ReturnNotLogging``1-``0,System-String-'></a>
+### ReturnNotLogging\`\`1(returnedObj,methodName) `method`
+
+##### Summary
+
+Add information to the log that the object is not logged.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| returnedObj | [\`\`0](#T-``0 '``0') |  |
+| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TResult |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrFacade-WriteLog-NLog-LogMessageGenerator-'></a>
+### WriteLog(messageFunc) `method`
+
+##### Summary
+
+Write log.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| messageFunc | [NLog.LogMessageGenerator](#T-NLog-LogMessageGenerator 'NLog.LogMessageGenerator') |  |
+
 <a name='T-GetcuReone-Cdi-FactFactory-BaseGrFactRulesProvider'></a>
 ## BaseGrFactRulesProvider `type`
 
@@ -305,6 +599,185 @@ This method has no parameters.
 ##### Parameters
 
 This method has no parameters.
+
+<a name='T-GetcuReone-Cdi-BaseGrFactory'></a>
+## BaseGrFactory `type`
+
+##### Namespace
+
+GetcuReone.Cdi
+
+##### Summary
+
+*Inherit from parent.*
+
+##### Remarks
+
+Added logging.
+
+<a name='P-GetcuReone-Cdi-BaseGrFactory-FactoryName'></a>
+### FactoryName `property`
+
+##### Summary
+
+Factory name.
+
+<a name='P-GetcuReone-Cdi-BaseGrFactory-NLogger'></a>
+### NLogger `property`
+
+##### Summary
+
+Logger.
+
+<a name='M-GetcuReone-Cdi-BaseGrFactory-CallMethodLogging-System-String-'></a>
+### CallMethodLogging(methodName) `method`
+
+##### Summary
+
+Logs a method call without parameters.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrFactory-CallMethodLogging``1-``0,System-String-'></a>
+### CallMethodLogging\`\`1(methodName,parameter) `method`
+
+##### Summary
+
+Logs a method call with parameter.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| methodName | [\`\`0](#T-``0 '``0') |  |
+| parameter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TParameter |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrFactory-GetAdapter``1'></a>
+### GetAdapter\`\`1() `method`
+
+##### Summary
+
+*Inherit from parent.*
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-GetcuReone-Cdi-BaseGrFactory-GetFacade``1'></a>
+### GetFacade\`\`1() `method`
+
+##### Summary
+
+*Inherit from parent.*
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-GetcuReone-Cdi-BaseGrFactory-GetFactFactory``1-System-Boolean-'></a>
+### GetFactFactory\`\`1(needNewFactory) `method`
+
+##### Summary
+
+Get fact factory.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| needNewFactory | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TFactRulesProvider |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrFactory-ReturnLogging-System-String-'></a>
+### ReturnLogging() `method`
+
+##### Summary
+
+Logs no response.
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-GetcuReone-Cdi-BaseGrFactory-ReturnLogging``1-``0,System-String-'></a>
+### ReturnLogging\`\`1(returnedObj,methodName) `method`
+
+##### Summary
+
+Logs the result of a method.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| returnedObj | [\`\`0](#T-``0 '``0') |  |
+| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TResult |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrFactory-ReturnNotLogging``1-``0,System-String-'></a>
+### ReturnNotLogging\`\`1(returnedObj,methodName) `method`
+
+##### Summary
+
+Add information to the log that the object is not logged.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| returnedObj | [\`\`0](#T-``0 '``0') |  |
+| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TResult |  |
+
+<a name='M-GetcuReone-Cdi-BaseGrFactory-WriteLog-NLog-LogMessageGenerator-'></a>
+### WriteLog(messageFunc) `method`
+
+##### Summary
+
+Write log.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| messageFunc | [NLog.LogMessageGenerator](#T-NLog-LogMessageGenerator 'NLog.LogMessageGenerator') |  |
 
 <a name='T-GetcuReone-Cdi-CdiHelper'></a>
 ## CdiHelper `type`
@@ -468,149 +941,6 @@ Update or add fact.
 | TFact |  |
 | TFactContainer |  |
 
-<a name='T-GetcuReone-Cdi-GrAdapterProxyBase`1'></a>
-## GrAdapterProxyBase\`1 `type`
-
-##### Namespace
-
-GetcuReone.Cdi
-
-##### Summary
-
-Base class for adapters.
-
-<a name='M-GetcuReone-Cdi-GrAdapterProxyBase`1-#ctor-System-Func{`0}-'></a>
-### #ctor(createProxyFunc) `constructor`
-
-##### Summary
-
-Constructor.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| createProxyFunc | [System.Func{\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{`0}') |  |
-
-<a name='P-GetcuReone-Cdi-GrAdapterProxyBase`1-AdapterName'></a>
-### AdapterName `property`
-
-##### Summary
-
-Adapter name.
-
-<a name='P-GetcuReone-Cdi-GrAdapterProxyBase`1-NLogger'></a>
-### NLogger `property`
-
-##### Summary
-
-Logger.
-
-<a name='M-GetcuReone-Cdi-GrAdapterProxyBase`1-CallMethodLogging-System-String-'></a>
-### CallMethodLogging(methodName) `method`
-
-##### Summary
-
-Logs a method call without parameters.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-<a name='M-GetcuReone-Cdi-GrAdapterProxyBase`1-CallMethodLogging``1-``0,System-String-'></a>
-### CallMethodLogging\`\`1(methodName,parameter) `method`
-
-##### Summary
-
-Logs a method call with parameter.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| methodName | [\`\`0](#T-``0 '``0') |  |
-| parameter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TParameter |  |
-
-<a name='M-GetcuReone-Cdi-GrAdapterProxyBase`1-ReturnLogging-System-String-'></a>
-### ReturnLogging() `method`
-
-##### Summary
-
-Logs no response.
-
-##### Parameters
-
-This method has no parameters.
-
-<a name='M-GetcuReone-Cdi-GrAdapterProxyBase`1-ReturnLogging``1-``0,System-String-'></a>
-### ReturnLogging\`\`1(returnedObj,methodName) `method`
-
-##### Summary
-
-Logs the result of a method.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| returnedObj | [\`\`0](#T-``0 '``0') |  |
-| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TResult |  |
-
-<a name='M-GetcuReone-Cdi-GrAdapterProxyBase`1-ReturnNotLogging``1-``0,System-String-'></a>
-### ReturnNotLogging\`\`1(returnedObj,methodName) `method`
-
-##### Summary
-
-Add information to the log that the object is not logged.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| returnedObj | [\`\`0](#T-``0 '``0') |  |
-| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TResult |  |
-
-<a name='M-GetcuReone-Cdi-GrAdapterProxyBase`1-WriteLog-NLog-LogMessageGenerator-'></a>
-### WriteLog(messageFunc) `method`
-
-##### Summary
-
-Write log.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| messageFunc | [NLog.LogMessageGenerator](#T-NLog-LogMessageGenerator 'NLog.LogMessageGenerator') |  |
-
 <a name='T-GetcuReone-Cdi-GrAdapterProxyBase`2'></a>
 ## GrAdapterProxyBase\`2 `type`
 
@@ -754,157 +1084,6 @@ Write log.
 | ---- | ---- | ----------- |
 | messageFunc | [NLog.LogMessageGenerator](#T-NLog-LogMessageGenerator 'NLog.LogMessageGenerator') |  |
 
-<a name='T-GetcuReone-Cdi-GrFacadeBase'></a>
-## GrFacadeBase `type`
-
-##### Namespace
-
-GetcuReone.Cdi
-
-##### Summary
-
-Base clas for facades.
-
-<a name='P-GetcuReone-Cdi-GrFacadeBase-FacadeName'></a>
-### FacadeName `property`
-
-##### Summary
-
-Facade name.
-
-<a name='P-GetcuReone-Cdi-GrFacadeBase-NLogger'></a>
-### NLogger `property`
-
-##### Summary
-
-Logger.
-
-<a name='M-GetcuReone-Cdi-GrFacadeBase-CallMethodLogging-System-String-'></a>
-### CallMethodLogging(methodName) `method`
-
-##### Summary
-
-Logs a method call without parameters.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-<a name='M-GetcuReone-Cdi-GrFacadeBase-CallMethodLogging``1-``0,System-String-'></a>
-### CallMethodLogging\`\`1(methodName,parameter) `method`
-
-##### Summary
-
-Logs a method call with parameter.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| methodName | [\`\`0](#T-``0 '``0') |  |
-| parameter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TParameter |  |
-
-<a name='M-GetcuReone-Cdi-GrFacadeBase-GetAdapter``1'></a>
-### GetAdapter\`\`1() `method`
-
-##### Summary
-
-Get adapter.
-
-##### Returns
-
-
-
-##### Parameters
-
-This method has no parameters.
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TAdapter |  |
-
-<a name='M-GetcuReone-Cdi-GrFacadeBase-ReturnLogging-System-String-'></a>
-### ReturnLogging() `method`
-
-##### Summary
-
-Logs no response.
-
-##### Parameters
-
-This method has no parameters.
-
-<a name='M-GetcuReone-Cdi-GrFacadeBase-ReturnLogging``1-``0,System-String-'></a>
-### ReturnLogging\`\`1(returnedObj,methodName) `method`
-
-##### Summary
-
-Logs the result of a method.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| returnedObj | [\`\`0](#T-``0 '``0') |  |
-| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TResult |  |
-
-<a name='M-GetcuReone-Cdi-GrFacadeBase-ReturnNotLogging``1-``0,System-String-'></a>
-### ReturnNotLogging\`\`1(returnedObj,methodName) `method`
-
-##### Summary
-
-Add information to the log that the object is not logged.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| returnedObj | [\`\`0](#T-``0 '``0') |  |
-| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TResult |  |
-
-<a name='M-GetcuReone-Cdi-GrFacadeBase-WriteLog-NLog-LogMessageGenerator-'></a>
-### WriteLog(messageFunc) `method`
-
-##### Summary
-
-Write log.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| messageFunc | [NLog.LogMessageGenerator](#T-NLog-LogMessageGenerator 'NLog.LogMessageGenerator') |  |
-
 <a name='T-GetcuReone-Cdi-FactFactory-GrFactFactory'></a>
 ## GrFactFactory `type`
 
@@ -975,185 +1154,6 @@ This method has no parameters.
 ##### Parameters
 
 This method has no parameters.
-
-<a name='T-GetcuReone-Cdi-GrFactoryBase'></a>
-## GrFactoryBase `type`
-
-##### Namespace
-
-GetcuReone.Cdi
-
-##### Summary
-
-*Inherit from parent.*
-
-##### Remarks
-
-Added logging.
-
-<a name='P-GetcuReone-Cdi-GrFactoryBase-FactoryName'></a>
-### FactoryName `property`
-
-##### Summary
-
-Factory name.
-
-<a name='P-GetcuReone-Cdi-GrFactoryBase-NLogger'></a>
-### NLogger `property`
-
-##### Summary
-
-Logger.
-
-<a name='M-GetcuReone-Cdi-GrFactoryBase-CallMethodLogging-System-String-'></a>
-### CallMethodLogging(methodName) `method`
-
-##### Summary
-
-Logs a method call without parameters.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-<a name='M-GetcuReone-Cdi-GrFactoryBase-CallMethodLogging``1-``0,System-String-'></a>
-### CallMethodLogging\`\`1(methodName,parameter) `method`
-
-##### Summary
-
-Logs a method call with parameter.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| methodName | [\`\`0](#T-``0 '``0') |  |
-| parameter | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TParameter |  |
-
-<a name='M-GetcuReone-Cdi-GrFactoryBase-GetAdapter``1'></a>
-### GetAdapter\`\`1() `method`
-
-##### Summary
-
-*Inherit from parent.*
-
-##### Parameters
-
-This method has no parameters.
-
-<a name='M-GetcuReone-Cdi-GrFactoryBase-GetFacade``1'></a>
-### GetFacade\`\`1() `method`
-
-##### Summary
-
-*Inherit from parent.*
-
-##### Parameters
-
-This method has no parameters.
-
-<a name='M-GetcuReone-Cdi-GrFactoryBase-GetFactFactory``1-System-Boolean-'></a>
-### GetFactFactory\`\`1(needNewFactory) `method`
-
-##### Summary
-
-Get fact factory.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| needNewFactory | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') |  |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TFactRulesProvider |  |
-
-<a name='M-GetcuReone-Cdi-GrFactoryBase-ReturnLogging-System-String-'></a>
-### ReturnLogging() `method`
-
-##### Summary
-
-Logs no response.
-
-##### Parameters
-
-This method has no parameters.
-
-<a name='M-GetcuReone-Cdi-GrFactoryBase-ReturnLogging``1-``0,System-String-'></a>
-### ReturnLogging\`\`1(returnedObj,methodName) `method`
-
-##### Summary
-
-Logs the result of a method.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| returnedObj | [\`\`0](#T-``0 '``0') |  |
-| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TResult |  |
-
-<a name='M-GetcuReone-Cdi-GrFactoryBase-ReturnNotLogging``1-``0,System-String-'></a>
-### ReturnNotLogging\`\`1(returnedObj,methodName) `method`
-
-##### Summary
-
-Add information to the log that the object is not logged.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| returnedObj | [\`\`0](#T-``0 '``0') |  |
-| methodName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TResult |  |
-
-<a name='M-GetcuReone-Cdi-GrFactoryBase-WriteLog-NLog-LogMessageGenerator-'></a>
-### WriteLog(messageFunc) `method`
-
-##### Summary
-
-Write log.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| messageFunc | [NLog.LogMessageGenerator](#T-NLog-LogMessageGenerator 'NLog.LogMessageGenerator') |  |
 
 <a name='T-GetcuReone-Cdi-FactFactory-IGrFactFactory'></a>
 ## IGrFactFactory `type`
