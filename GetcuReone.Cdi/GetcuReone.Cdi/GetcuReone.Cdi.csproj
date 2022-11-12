@@ -13,7 +13,7 @@
         <PackageTags>getcureone cdi</PackageTags>
         <PackageReleaseNotes>
             Changes:
-            - support for changes in the GetcuReone.FactFactory.5.0.0 library
+            - support for changes in the GetcuReone.FactFactory.5.0.1 library
             - renaming base classes ('base' is now a prefix)
             - create interface IGrFactRulesProvider
         </PackageReleaseNotes>
@@ -46,7 +46,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="GetcuReone.FactFactory" Version="5.0.0" />
+        <PackageReference Include="GetcuReone.FactFactory" Version="5.0.1" />
         <PackageReference Include="GetcuReone.Cdo.Logging" Version="2.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
